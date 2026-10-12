@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowUpRight,
   CalendarDays,
@@ -8,8 +8,8 @@ import {
   Languages,
   Lightbulb,
   Linkedin,
-  Mail,
   MapPin,
+  Menu,
   Mic2,
   PenLine,
   Quote,
@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
   TerminalSquare,
+  X,
 } from 'lucide-react';
 
 type Lang = 'en' | 'fr';
@@ -160,6 +161,13 @@ const recommendationsFr: typeof recommendationsEn = [
 
 const repositoriesEn = [
   {
+    name: 'QA Playground',
+    description:
+      'Playwright + TypeScript E2E suite for a hosted UI-elements practice page, run across Chromium, Firefox and WebKit, with nightly and per-PR GitHub Actions runs and an Allure dashboard with pass/fail history.',
+    stack: 'Playwright / TypeScript / GitHub Actions / Allure / Docker',
+    href: 'https://github.com/IrinaZhuravleva/qa-playground/tree/main/tests/ui-elements-practice',
+  },
+  {
     name: 'Flashcards Words',
     description:
       'Vocabulary flashcards app with React, Vite, and TypeScript, covered by Python + Playwright E2E tests, Allure results, and GitLab CI deploy/rollback jobs.',
@@ -169,6 +177,13 @@ const repositoriesEn = [
 ];
 
 const repositoriesFr: typeof repositoriesEn = [
+  {
+    name: 'QA Playground',
+    description:
+      "Suite E2E Playwright + TypeScript pour une page d'entraînement aux éléments d'interface hébergée, exécutée sur Chromium, Firefox et WebKit, avec des exécutions GitHub Actions nocturnes et à chaque PR, et un tableau de bord Allure avec l'historique des succès et échecs.",
+    stack: 'Playwright / TypeScript / GitHub Actions / Allure / Docker',
+    href: 'https://github.com/IrinaZhuravleva/qa-playground/tree/main/tests/ui-elements-practice',
+  },
   {
     name: 'Flashcards Words',
     description:
@@ -192,7 +207,7 @@ type CaseStudy = {
 const caseStudiesEn: CaseStudy[] = [
   {
     title: 'AI-Powered CV Tailoring Platform',
-    role: 'Senior QA Automation Engineer',
+    role: 'Senior QA Automation Engineer & Team Lead',
     challenge:
       'A new internal platform using an LLM pipeline to tailor resumes to job postings had no end-to-end coverage, unresolved accessibility issues, and no automated way to confirm a release was healthy right after deployment.',
     solution:
@@ -200,14 +215,32 @@ const caseStudiesEn: CaseStudy[] = [
     results:
       'Release confidence for an LLM-driven product: every deploy is now smoke-tested automatically, accessibility and security gaps are caught before they reach users, and QA scenarios stay traceable in the test-management system instead of living only in test code.',
     description:
-      'Quality assurance for an internal AI platform centered on an LLM-based resume-tailoring pipeline (built with LangGraph). Covered end-to-end test automation, accessibility and security hardening, and CI/CD reliability for a product shipping fast-moving AI features to production on Kubernetes.',
+      'Quality assurance for an internal AI platform centered on an LLM-based resume-tailoring pipeline (built with LangGraph). Covered end-to-end test automation, accessibility and security hardening, and CI/CD reliability for a product shipping fast-moving AI features to production on Kubernetes. Also led a cross-functional team of four (two backend engineers, one frontend engineer, one QA engineer): planning, task distribution, releases, and communication with the customer.',
     achievements: [
       'Built an end-to-end Playwright + BDD (Cucumber/Gherkin) test suite and registered scenarios in Azure DevOps Test Plans.',
       'Fixed WCAG accessibility violations, including color-contrast and link-name issues.',
       'Added OWASP-aligned security test coverage across access control, injection, and authentication risks.',
       'Introduced an automated post-deploy smoke-test stage (E2E health check) into the Azure DevOps CI/CD pipeline deploying to Kubernetes.',
+      'Led a cross-functional team of four (two backend, one frontend, one QA engineer): planning, task distribution, release management, and communication with the customer.',
     ],
     stack: 'Playwright · BDD/Cucumber · Gherkin · TypeScript · Python · Azure DevOps (Pipelines, Test Plans) · Kubernetes · Docker · LangGraph · WCAG · OWASP',
+  },
+  {
+    title: 'Medical Software Certification (IEC 62304)',
+    role: 'QA Lead',
+    challenge:
+      'A medical software product needed a complete, certification-ready test documentation set for IEC 62304 (Class A), with no existing environment or test framework in place and only a two-month window to onboard and deliver.',
+    solution:
+      'Defined the test strategy and built the full framework and documentation set from scratch — test plans, traceability matrices, structured test suites, and detailed test cases derived from the Software and UI Verification Plans — while coordinating with a parallel client-side development team.',
+    results:
+      'A certification-ready testing process that enabled the product to pass IEC 62304 certification, delivered on a tight timeline with no pre-existing environment.',
+    description:
+      'Preparation of test documentation for a medical software product undergoing certification under IEC 62304 (Class A). Responsible for quickly onboarding to the product within a two-month timeline, analysing regulatory requirements, and creating a complete set of test artifacts, including test plans, test cases, traceability matrices, and risk-aligned test coverage. Ensured compliance with medical software lifecycle standards and contributed to establishing a structured, certification-ready testing process.',
+    achievements: [
+      'Defined test strategy, created Test Plan, traceability matrices, and structured test suites, ensuring regulatory compliance (IEC 62304).',
+      'Enabled successful certification by delivering a full test solution from scratch under tight deadlines, without a provided environment, while coordinating with parallel client-side development; developed detailed test cases from the Software/UI Verification Plan covering all requirements and risks.',
+    ],
+    stack: 'Jira · Xray · Confluence · Postman · Google Drive',
   },
   {
     title: 'ERP System (NetSuite)',
@@ -298,29 +331,12 @@ const caseStudiesEn: CaseStudy[] = [
     ],
     stack: 'Postman · Swagger · Azure DevOps · Confluence',
   },
-  {
-    title: 'Medical Software Certification (IEC 62304)',
-    role: 'QA Lead',
-    challenge:
-      'A medical software product needed a complete, certification-ready test documentation set for IEC 62304 (Class A), with no existing environment or test framework in place and only a two-month window to onboard and deliver.',
-    solution:
-      'Defined the test strategy and built the full framework and documentation set from scratch — test plans, traceability matrices, structured test suites, and detailed test cases derived from the Software and UI Verification Plans — while coordinating with a parallel client-side development team.',
-    results:
-      'A certification-ready testing process that enabled the product to pass IEC 62304 certification, delivered on a tight timeline with no pre-existing environment.',
-    description:
-      'Preparation of test documentation for a medical software product undergoing certification under IEC 62304 (Class A). Responsible for quickly onboarding to the product within a two-month timeline, analysing regulatory requirements, and creating a complete set of test artifacts, including test plans, test cases, traceability matrices, and risk-aligned test coverage. Ensured compliance with medical software lifecycle standards and contributed to establishing a structured, certification-ready testing process.',
-    achievements: [
-      'Defined test strategy, created Test Plan, traceability matrices, and structured test suites, ensuring regulatory compliance (IEC 62304).',
-      'Enabled successful certification by delivering a full test solution from scratch under tight deadlines, without a provided environment, while coordinating with parallel client-side development; developed detailed test cases from the Software/UI Verification Plan covering all requirements and risks.',
-    ],
-    stack: 'Jira · Xray · Confluence · Postman · Google Drive',
-  },
 ];
 
 const caseStudiesFr: CaseStudy[] = [
   {
     title: 'Plateforme IA de personnalisation de CV',
-    role: 'Ingénieure QA Automatisation Senior',
+    role: 'Ingénieure QA Automatisation Senior & Team Lead',
     challenge:
       "Une nouvelle plateforme interne utilisant un pipeline LLM pour adapter des CV aux offres d'emploi n'avait aucune couverture de bout en bout, des problèmes d'accessibilité non résolus, et aucun moyen automatisé de vérifier la santé d'une mise en production juste après le déploiement.",
     solution:
@@ -328,14 +344,32 @@ const caseStudiesFr: CaseStudy[] = [
     results:
       "Une confiance renforcée dans les mises en production d'un produit piloté par LLM : chaque déploiement est désormais testé automatiquement, les failles d'accessibilité et de sécurité sont détectées avant d'atteindre les utilisateurs, et les scénarios QA restent traçables dans l'outil de gestion des tests plutôt que de vivre uniquement dans le code de test.",
     description:
-      "Assurance qualité pour une plateforme IA interne centrée sur un pipeline LLM de personnalisation de CV (construit avec LangGraph). A couvert l'automatisation des tests de bout en bout, le renforcement de l'accessibilité et de la sécurité, ainsi que la fiabilité du CI/CD pour un produit déployant rapidement des fonctionnalités IA en production sur Kubernetes.",
+      "Assurance qualité pour une plateforme IA interne centrée sur un pipeline LLM de personnalisation de CV (construit avec LangGraph). A couvert l'automatisation des tests de bout en bout, le renforcement de l'accessibilité et de la sécurité, ainsi que la fiabilité du CI/CD pour un produit déployant rapidement des fonctionnalités IA en production sur Kubernetes. A également dirigé une équipe pluridisciplinaire de quatre personnes (deux ingénieurs backend, un ingénieur frontend, un ingénieur QA) : planification, répartition des tâches, mises en production et communication avec le client.",
     achievements: [
       'A construit une suite de tests de bout en bout Playwright + BDD (Cucumber/Gherkin) et enregistré les scénarios de test dans Azure DevOps Test Plans.',
       "A corrigé des violations d'accessibilité WCAG, notamment des problèmes de contraste des couleurs et de nommage des liens.",
       "A ajouté une couverture de tests de sécurité alignée OWASP, couvrant les risques liés au contrôle d'accès, aux injections et à l'authentification.",
       "A mis en place une étape automatisée de smoke-test post-déploiement (vérification de santé E2E) dans le pipeline CI/CD Azure DevOps déployant sur Kubernetes.",
+      "A dirigé une équipe pluridisciplinaire de quatre personnes (deux backend, un frontend, un ingénieur QA) : planification, répartition des tâches, gestion des mises en production et communication avec le client.",
     ],
     stack: 'Playwright · BDD/Cucumber · Gherkin · TypeScript · Python · Azure DevOps (Pipelines, Test Plans) · Kubernetes · Docker · LangGraph · WCAG · OWASP',
+  },
+  {
+    title: 'Certification logicielle médicale (IEC 62304)',
+    role: 'QA Lead',
+    challenge:
+      'Un produit logiciel médical nécessitait un ensemble complet de documentation de test prêt pour la certification IEC 62304 (Classe A), sans environnement ni framework de test existant, avec seulement deux mois pour prendre en main le produit et livrer.',
+    solution:
+      'Définition de la stratégie de test et construction du framework et de la documentation complets depuis zéro — plans de test, matrices de traçabilité, suites de tests structurées, et cas de test détaillés dérivés des plans de vérification logicielle et UI — en coordination avec une équipe de développement cliente en parallèle.',
+    results:
+      "Un processus de test prêt pour la certification ayant permis au produit d'obtenir la certification IEC 62304, livré dans un délai serré et sans environnement préexistant.",
+    description:
+      'Préparation de la documentation de test pour un produit logiciel médical en cours de certification IEC 62304 (Classe A). Responsable de la prise en main rapide du produit sur un délai de deux mois, de l’analyse des exigences réglementaires, et de la création d’un ensemble complet d’artefacts de test, incluant plans de test, cas de test, matrices de traçabilité et couverture de test alignée sur les risques. A garanti la conformité aux standards du cycle de vie des logiciels médicaux et a contribué à établir un processus de test structuré et prêt pour la certification.',
+    achievements: [
+      'A défini la stratégie de test, créé le plan de test, les matrices de traçabilité et des suites de tests structurées, garantissant la conformité réglementaire (IEC 62304).',
+      'A permis une certification réussie en livrant une solution de test complète depuis zéro dans des délais serrés, sans environnement fourni, tout en coordonnant avec une équipe de développement cliente en parallèle ; a développé des cas de test détaillés à partir du plan de vérification logicielle/UI couvrant toutes les exigences et tous les risques.',
+    ],
+    stack: 'Jira · Xray · Confluence · Postman · Google Drive',
   },
   {
     title: 'Système ERP (NetSuite)',
@@ -425,23 +459,6 @@ const caseStudiesFr: CaseStudy[] = [
       'A créé de la documentation spécifique aux tests (cas de test, rapports de bugs).',
     ],
     stack: 'Postman · Swagger · Azure DevOps · Confluence',
-  },
-  {
-    title: 'Certification logicielle médicale (IEC 62304)',
-    role: 'QA Lead',
-    challenge:
-      'Un produit logiciel médical nécessitait un ensemble complet de documentation de test prêt pour la certification IEC 62304 (Classe A), sans environnement ni framework de test existant, avec seulement deux mois pour prendre en main le produit et livrer.',
-    solution:
-      'Définition de la stratégie de test et construction du framework et de la documentation complets depuis zéro — plans de test, matrices de traçabilité, suites de tests structurées, et cas de test détaillés dérivés des plans de vérification logicielle et UI — en coordination avec une équipe de développement cliente en parallèle.',
-    results:
-      "Un processus de test prêt pour la certification ayant permis au produit d'obtenir la certification IEC 62304, livré dans un délai serré et sans environnement préexistant.",
-    description:
-      'Préparation de la documentation de test pour un produit logiciel médical en cours de certification IEC 62304 (Classe A). Responsable de la prise en main rapide du produit sur un délai de deux mois, de l’analyse des exigences réglementaires, et de la création d’un ensemble complet d’artefacts de test, incluant plans de test, cas de test, matrices de traçabilité et couverture de test alignée sur les risques. A garanti la conformité aux standards du cycle de vie des logiciels médicaux et a contribué à établir un processus de test structuré et prêt pour la certification.',
-    achievements: [
-      'A défini la stratégie de test, créé le plan de test, les matrices de traçabilité et des suites de tests structurées, garantissant la conformité réglementaire (IEC 62304).',
-      'A permis une certification réussie en livrant une solution de test complète depuis zéro dans des délais serrés, sans environnement fourni, tout en coordonnant avec une équipe de développement cliente en parallèle ; a développé des cas de test détaillés à partir du plan de vérification logicielle/UI couvrant toutes les exigences et tous les risques.',
-    ],
-    stack: 'Jira · Xray · Confluence · Postman · Google Drive',
   },
 ];
 
@@ -557,8 +574,10 @@ const uiText = {
   en: {
     ariaBrandHome: 'Irina Zhuravleva portfolio home',
     ariaNav: 'Portfolio navigation',
-    navWork: 'Work',
+    navPrinciples: 'Principles',
+    navWork: 'Repositories',
     navCaseStudies: 'Case Studies',
+    navRecommendations: 'Recommendations',
     navWriting: 'Writing',
     navContact: 'Contact',
     heroEyebrow: 'QA Automation Engineer',
@@ -570,7 +589,6 @@ const uiText = {
     heroFocusLabel: 'Focus:',
     heroFocusText: 'stable Playwright suites, LLM/AI feature evaluation, fast release feedback',
     selectedWorkBtn: 'Selected work',
-    getInTouchBtn: 'Get in touch',
     ariaLinkedin: 'LinkedIn profile',
     ariaMedium: 'Medium profile',
     ariaPortrait: 'Portrait of Irina Zhuravleva',
@@ -601,10 +619,10 @@ const uiText = {
       results: 'Results',
       description: 'Project Description',
       achievements: 'Achievements',
-      hintFront: 'Click to see resume details',
+      hintFront: 'Click to see the case study',
       hintBack: 'Click to go back',
-      ariaFront: 'showing case study, press to see resume details',
-      ariaBack: 'showing resume details, press to show case study',
+      ariaFront: 'showing resume details, press to see the case study',
+      ariaBack: 'showing case study, press to show resume details',
     },
     writingKicker: 'Articles',
     writingTitle: 'Published writing',
@@ -613,14 +631,18 @@ const uiText = {
     footerHeading: 'Let’s talk about practical, maintainable test coverage.',
     copyrightSuffix: 'All rights reserved.',
     ariaLangSwitch: 'Language',
+    ariaOpenMenu: 'Open menu',
+    ariaCloseMenu: 'Close menu',
     ariaSwitchToFrench: 'Switch language to French',
     ariaSwitchToEnglish: 'Switch language to English',
   },
   fr: {
     ariaBrandHome: "Accueil du portfolio d'Irina Zhuravleva",
     ariaNav: 'Navigation du portfolio',
-    navWork: 'Projets',
+    navPrinciples: 'Principes',
+    navWork: 'Dépôts',
     navCaseStudies: 'Études de cas',
+    navRecommendations: 'Recommandations',
     navWriting: 'Articles',
     navContact: 'Contact',
     heroEyebrow: 'Ingénieure QA Automatisation',
@@ -632,7 +654,6 @@ const uiText = {
     heroFocusLabel: 'Focus :',
     heroFocusText: "suites Playwright stables, évaluation des fonctionnalités IA/LLM, retours rapides avant chaque mise en production",
     selectedWorkBtn: 'Projets sélectionnés',
-    getInTouchBtn: 'Me contacter',
     ariaLinkedin: 'Profil LinkedIn',
     ariaMedium: 'Profil Medium',
     ariaPortrait: "Portrait d'Irina Zhuravleva",
@@ -663,10 +684,10 @@ const uiText = {
       results: 'Résultats',
       description: 'Description du projet',
       achievements: 'Réalisations',
-      hintFront: 'Cliquez pour voir les détails du CV',
+      hintFront: "Cliquez pour voir l'étude de cas",
       hintBack: 'Cliquez pour revenir',
-      ariaFront: "affiche l'étude de cas, appuyez pour voir les détails du CV",
-      ariaBack: "affiche les détails du CV, appuyez pour revenir à l'étude de cas",
+      ariaFront: "affiche les détails du CV, appuyez pour voir l'étude de cas",
+      ariaBack: "affiche l'étude de cas, appuyez pour revenir aux détails du CV",
     },
     writingKicker: 'Articles',
     writingTitle: 'Articles publiés',
@@ -675,6 +696,8 @@ const uiText = {
     footerHeading: "Discutons d'une couverture de test pratique et maintenable.",
     copyrightSuffix: 'Tous droits réservés.',
     ariaLangSwitch: 'Langue',
+    ariaOpenMenu: 'Ouvrir le menu',
+    ariaCloseMenu: 'Fermer le menu',
     ariaSwitchToFrench: 'Passer la langue en français',
     ariaSwitchToEnglish: "Passer la langue en anglais",
   },
@@ -728,29 +751,6 @@ function CaseStudyFlipCard({ study, labels }: { study: CaseStudy; labels: CaseSt
             <span className="case-study-role">{study.role}</span>
           </div>
           <div className="case-study-block">
-            <span className="case-study-label">{labels.challenge}</span>
-            <p>{study.challenge}</p>
-          </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.solution}</span>
-            <p>{study.solution}</p>
-          </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.results}</span>
-            <p>{study.results}</p>
-          </div>
-          <p className="case-study-stack">{study.stack}</p>
-          <span className="case-study-flip-hint">
-            <RotateCw size={14} />
-            {labels.hintFront}
-          </span>
-        </article>
-        <article className="case-study-card case-study-back" aria-hidden={!flipped} tabIndex={flipped ? 0 : -1}>
-          <div className="case-study-heading">
-            <h3>{study.title}</h3>
-            <span className="case-study-role">{study.role}</span>
-          </div>
-          <div className="case-study-block">
             <span className="case-study-label">{labels.description}</span>
             <p>{study.description}</p>
           </div>
@@ -765,6 +765,29 @@ function CaseStudyFlipCard({ study, labels }: { study: CaseStudy; labels: CaseSt
           <p className="case-study-stack">{study.stack}</p>
           <span className="case-study-flip-hint">
             <RotateCw size={14} />
+            {labels.hintFront}
+          </span>
+        </article>
+        <article className="case-study-card case-study-back" aria-hidden={!flipped} tabIndex={flipped ? 0 : -1}>
+          <div className="case-study-heading">
+            <h3>{study.title}</h3>
+            <span className="case-study-role">{study.role}</span>
+          </div>
+          <div className="case-study-block">
+            <span className="case-study-label">{labels.challenge}</span>
+            <p>{study.challenge}</p>
+          </div>
+          <div className="case-study-block">
+            <span className="case-study-label">{labels.solution}</span>
+            <p>{study.solution}</p>
+          </div>
+          <div className="case-study-block">
+            <span className="case-study-label">{labels.results}</span>
+            <p>{study.results}</p>
+          </div>
+          <p className="case-study-stack">{study.stack}</p>
+          <span className="case-study-flip-hint">
+            <RotateCw size={14} />
             {labels.hintBack}
           </span>
         </article>
@@ -775,12 +798,22 @@ function CaseStudyFlipCard({ study, labels }: { study: CaseStudy; labels: CaseSt
 
 export function App() {
   const [lang, setLang] = useState<Lang>('en');
+  const [menuOpen, setMenuOpen] = useState(false);
   const t = uiText[lang];
   const skillGroups = skillGroupsByLang[lang];
   const recommendations = recommendationsByLang[lang];
   const repositories = repositoriesByLang[lang];
   const caseStudies = caseStudiesByLang[lang];
   const principles = principlesByLang[lang];
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen]);
 
   return (
     <main>
@@ -790,9 +823,11 @@ export function App() {
           <span>Irina Zhuravleva</span>
         </a>
         <div className="nav-group">
-          <nav aria-label={t.ariaNav}>
-            <a href="#work">{t.navWork}</a>
+          <nav id="site-nav" className={menuOpen ? 'is-open' : ''} aria-label={t.ariaNav} onClick={() => setMenuOpen(false)}>
+            <a href="#principles">{t.navPrinciples}</a>
             <a href="#case-studies">{t.navCaseStudies}</a>
+            <a href="#recommendations">{t.navRecommendations}</a>
+            <a href="#work">{t.navWork}</a>
             <a href="#writing">{t.navWriting}</a>
             {/* <a href="#meetups">Meetups</a> */}
             <a href="#contact">{t.navContact}</a>
@@ -818,6 +853,16 @@ export function App() {
               FR
             </button>
           </div>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-expanded={menuOpen}
+            aria-controls="site-nav"
+            aria-label={menuOpen ? t.ariaCloseMenu : t.ariaOpenMenu}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </header>
 
@@ -840,10 +885,6 @@ export function App() {
             <a className="button primary" href="#work">
               {t.selectedWorkBtn}
               <ArrowUpRight size={18} />
-            </a>
-            <a className="button secondary" href="mailto:iravizion@gmail.com">
-              <Mail size={18} />
-              {t.getInTouchBtn}
             </a>
             <a className="button icon-link" href={linkedinHref} target="_blank" rel="noreferrer" aria-label={t.ariaLinkedin}>
               <Linkedin size={18} />
@@ -881,7 +922,7 @@ export function App() {
           problems reach users.
         </p>
       </section> */}
-      <section className="section principles">
+      <section className="section principles" id="principles">
         <div className="principles-header">
           <p className="section-kicker">
             <svg
@@ -932,7 +973,7 @@ export function App() {
         </div>
       </section>
 
-      <section className="section testimonials" aria-labelledby="recommendations-title">
+      <section className="section testimonials" id="recommendations" aria-labelledby="recommendations-title">
         <div className="section-heading">
           <div>
             <p className="section-kicker">
@@ -1086,10 +1127,6 @@ export function App() {
           <a className="button primary" href={mediumHref} target="_blank" rel="noreferrer">
             <PenLine size={18} />
             Medium
-          </a>
-          <a className="button primary" href="mailto:iravizion@gmail.com">
-            <Mail size={18} />
-            {t.getInTouchBtn}
           </a>
         </div>
         <p className="contact-band-copyright">
