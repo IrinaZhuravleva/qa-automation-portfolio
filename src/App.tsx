@@ -163,7 +163,7 @@ const repositoriesEn = [
   {
     name: 'QA Playground',
     description:
-      'Playwright + TypeScript E2E suite for a hosted UI-elements practice page, run across Chromium, Firefox and WebKit, with nightly and per-PR GitHub Actions runs and an Allure dashboard with pass/fail history.',
+      'Playwright + TypeScript test suite with two parts. UI E2E: a hosted UI-elements practice page, run across Chromium, Firefox and WebKit. AI evals (Resume Refactor): an LLM app that rewrites a resume for a job description, tested with a golden set, deterministic checks (fact preservation, no invented skills, prompt injection, edge cases) and an LLM-as-judge with a rubric, calibrated on known good and bad rewrites. Nightly and per-PR GitHub Actions runs, plus an Allure dashboard with pass/fail history.',
     stack: 'Playwright / TypeScript / GitHub Actions / Allure / Docker',
     href: 'https://github.com/IrinaZhuravleva/qa-playground/tree/main/tests/ui-elements-practice',
   },
