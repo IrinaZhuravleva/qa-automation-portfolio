@@ -24,6 +24,7 @@ type Lang = 'en' | 'fr';
 
 const linkedinHref = 'https://www.linkedin.com/in/irina-zhuravleva-23576925b/';
 const mediumHref = 'https://medium.com/@iravizion';
+const githubHref = 'https://github.com/IrinaZhuravleva';
 
 const skillGroupsEn = [
   {
@@ -168,6 +169,13 @@ const repositoriesEn = [
     href: 'https://github.com/IrinaZhuravleva/qa-playground/tree/main/tests/ui-elements-practice',
   },
   {
+    name: 'Tech Daily',
+    description:
+      'Personal news feed that collects articles from 15 RSS sources (AI, security, testing, development), sorts them into categories, and publishes a searchable, filterable page to GitHub Pages every day. Playwright + TypeScript E2E tests run against mocked data for stable results: filters and counters, search, empty and error states, image fallback, and a mobile layout check, plus a contract test for the real scraped data. The tests run in GitHub Actions before each deploy, so a failing test blocks publishing.',
+    stack: 'Python / Playwright / TypeScript / GitHub Actions / GitHub Pages',
+    href: 'https://github.com/IrinaZhuravleva/tech-daily',
+  },
+  {
     name: 'Flashcards Words',
     description:
       'Vocabulary flashcards app with React, Vite, and TypeScript, covered by Python + Playwright E2E tests, Allure results, and GitLab CI deploy/rollback jobs.',
@@ -183,6 +191,13 @@ const repositoriesFr: typeof repositoriesEn = [
       "Suite E2E Playwright + TypeScript pour une page d'entraînement aux éléments d'interface hébergée, exécutée sur Chromium, Firefox et WebKit, avec des exécutions GitHub Actions nocturnes et à chaque PR, et un tableau de bord Allure avec l'historique des succès et échecs.",
     stack: 'Playwright / TypeScript / GitHub Actions / Allure / Docker',
     href: 'https://github.com/IrinaZhuravleva/qa-playground/tree/main/tests/ui-elements-practice',
+  },
+  {
+    name: 'Tech Daily',
+    description:
+      "Fil d'actualité personnel qui collecte des articles de 15 sources RSS (IA, sécurité, tests, développement), les classe par catégories et publie chaque jour sur GitHub Pages une page avec recherche et filtres. Tests E2E Playwright + TypeScript sur des données simulées pour des résultats stables : filtres et compteurs, recherche, états vides et d'erreur, image de secours, vérification de l'affichage mobile, plus un test de contrat sur les vraies données collectées. Les tests s'exécutent dans GitHub Actions avant chaque déploiement : un test en échec bloque la publication.",
+    stack: 'Python / Playwright / TypeScript / GitHub Actions / GitHub Pages',
+    href: 'https://github.com/IrinaZhuravleva/tech-daily',
   },
   {
     name: 'Flashcards Words',
@@ -227,7 +242,7 @@ const caseStudiesEn: CaseStudy[] = [
   },
   {
     title: 'Medical Software Certification (IEC 62304)',
-    role: 'QA Lead',
+    role: 'Senior QA Engineer',
     challenge:
       'A medical software product needed a complete, certification-ready test documentation set for IEC 62304 (Class A), with no existing environment or test framework in place and only a two-month window to onboard and deliver.',
     solution:
@@ -241,6 +256,24 @@ const caseStudiesEn: CaseStudy[] = [
       'Enabled successful certification by delivering a full test solution from scratch under tight deadlines, without a provided environment, while coordinating with parallel client-side development; developed detailed test cases from the Software/UI Verification Plan covering all requirements and risks.',
     ],
     stack: 'Jira · Xray · Confluence · Postman · Google Drive',
+  },
+  {
+    title: 'Microsite-Building Platform',
+    role: 'Automation QA Engineer',
+    challenge:
+      'A new platform for building form-submission microsites had no test coverage at all, and as the only QA engineer on the project I needed to keep pace as 10 separate sites shipped in parallel.',
+    solution:
+      'Built Playwright UI test frameworks for each microsite from the ground up, added load testing with Artillery, and stood up CI/CD pipelines on Azure DevOps and GitLab alongside manual regression testing.',
+    results:
+      'All 10 microsites shipped with automated UI coverage and repeatable pipelines, giving the team fast, load-tested feedback before every release.',
+    description:
+      'Develop a platform for building microsites for form submissions, focusing on building automated testing frameworks, implementing CI/CD workflows, and ensuring system reliability through manual and automated testing. Worked as the sole QA engineer on the project.',
+    achievements: [
+      'Built testing frameworks for 10 microsites from scratch using Playwright.',
+      'Built CI/CD workflows using Azure DevOps pipelines and GitLab.',
+      'Implemented load testing using Artillery.',
+    ],
+    stack: 'Playwright · Gherkin · TypeScript · Azure DevOps · Confluence · AWS · Docker · GitLab · Artillery · React · Next.js · Tailwind CSS · PrimeReact · Postman · Swagger',
   },
   {
     title: 'ERP System (NetSuite)',
@@ -259,24 +292,6 @@ const caseStudiesEn: CaseStudy[] = [
       'Conducted testing of integrations with the Oracle NetSuite API.',
     ],
     stack: 'Playwright-BDD · Gherkin · TypeScript · Azure DevOps · Confluence · Atlassian (Jira, Bitbucket) · Oracle NetSuite · Postman · Swagger',
-  },
-  {
-    title: 'Microsite-Building Platform',
-    role: 'Automation QA Engineer',
-    challenge:
-      'A new platform for building form-submission microsites had no test coverage at all, and QA needed to keep pace as 10 separate sites shipped in parallel.',
-    solution:
-      'Built Playwright UI test frameworks for each microsite from the ground up, added load testing with Artillery, and stood up CI/CD pipelines on Azure DevOps and GitLab alongside manual regression testing.',
-    results:
-      'All 10 microsites shipped with automated UI coverage and repeatable pipelines, giving the team fast, load-tested feedback before every release.',
-    description:
-      'Develop a platform for building microsites for form submissions, focusing on building automated testing frameworks, implementing CI/CD workflows, and ensuring system reliability through manual and automated testing.',
-    achievements: [
-      'Built testing frameworks for 10 microsites from scratch using Playwright.',
-      'Built CI/CD workflows using Azure DevOps pipelines and GitLab.',
-      'Implemented load testing using Artillery.',
-    ],
-    stack: 'Playwright · Gherkin · TypeScript · Azure DevOps · Confluence · AWS · Docker · GitLab · Artillery · React · Next.js · Tailwind CSS · PrimeReact · Postman · Swagger',
   },
   {
     title: 'Lab Specimen-Tracking Platform',
@@ -356,7 +371,7 @@ const caseStudiesFr: CaseStudy[] = [
   },
   {
     title: 'Certification logicielle médicale (IEC 62304)',
-    role: 'QA Lead',
+    role: 'Senior QA Engineer',
     challenge:
       'Un produit logiciel médical nécessitait un ensemble complet de documentation de test prêt pour la certification IEC 62304 (Classe A), sans environnement ni framework de test existant, avec seulement deux mois pour prendre en main le produit et livrer.',
     solution:
@@ -370,6 +385,24 @@ const caseStudiesFr: CaseStudy[] = [
       'A permis une certification réussie en livrant une solution de test complète depuis zéro dans des délais serrés, sans environnement fourni, tout en coordonnant avec une équipe de développement cliente en parallèle ; a développé des cas de test détaillés à partir du plan de vérification logicielle/UI couvrant toutes les exigences et tous les risques.',
     ],
     stack: 'Jira · Xray · Confluence · Postman · Google Drive',
+  },
+  {
+    title: 'Plateforme de création de microsites',
+    role: 'Ingénieure QA Automatisation',
+    challenge:
+      "Une nouvelle plateforme de création de microsites pour la soumission de formulaires n'avait aucune couverture de test, et, seule ingénieure QA sur le projet, je devais suivre le rythme du déploiement en parallèle de 10 sites distincts.",
+    solution:
+      'Construction de frameworks de test UI Playwright pour chaque microsite depuis zéro, ajout de tests de charge avec Artillery, et mise en place de pipelines CI/CD sur Azure DevOps et GitLab en complément des tests de régression manuels.',
+    results:
+      'Les 10 microsites ont été livrés avec une couverture UI automatisée et des pipelines reproductibles, donnant à l’équipe des retours rapides et testés en charge avant chaque mise en production.',
+    description:
+      'Développement d’une plateforme de création de microsites pour la soumission de formulaires, avec un focus sur la construction de frameworks de test automatisés, la mise en place de workflows CI/CD, et la garantie de la fiabilité du système via des tests manuels et automatisés. Seule ingénieure QA sur le projet.',
+    achievements: [
+      'A construit des frameworks de test pour 10 microsites depuis zéro avec Playwright.',
+      'A mis en place des workflows CI/CD avec les pipelines Azure DevOps et GitLab.',
+      'A mis en œuvre des tests de charge avec Artillery.',
+    ],
+    stack: 'Playwright · Gherkin · TypeScript · Azure DevOps · Confluence · AWS · Docker · GitLab · Artillery · React · Next.js · Tailwind CSS · PrimeReact · Postman · Swagger',
   },
   {
     title: 'Système ERP (NetSuite)',
@@ -388,24 +421,6 @@ const caseStudiesFr: CaseStudy[] = [
       "A mené des tests d'intégration avec l'API Oracle NetSuite.",
     ],
     stack: 'Playwright-BDD · Gherkin · TypeScript · Azure DevOps · Confluence · Atlassian (Jira, Bitbucket) · Oracle NetSuite · Postman · Swagger',
-  },
-  {
-    title: 'Plateforme de création de microsites',
-    role: 'Ingénieure QA Automatisation',
-    challenge:
-      "Une nouvelle plateforme de création de microsites pour la soumission de formulaires n'avait aucune couverture de test, et la QA devait suivre le rythme du déploiement en parallèle de 10 sites distincts.",
-    solution:
-      'Construction de frameworks de test UI Playwright pour chaque microsite depuis zéro, ajout de tests de charge avec Artillery, et mise en place de pipelines CI/CD sur Azure DevOps et GitLab en complément des tests de régression manuels.',
-    results:
-      'Les 10 microsites ont été livrés avec une couverture UI automatisée et des pipelines reproductibles, donnant à l’équipe des retours rapides et testés en charge avant chaque mise en production.',
-    description:
-      'Développement d’une plateforme de création de microsites pour la soumission de formulaires, avec un focus sur la construction de frameworks de test automatisés, la mise en place de workflows CI/CD, et la garantie de la fiabilité du système via des tests manuels et automatisés.',
-    achievements: [
-      'A construit des frameworks de test pour 10 microsites depuis zéro avec Playwright.',
-      'A mis en place des workflows CI/CD avec les pipelines Azure DevOps et GitLab.',
-      'A mis en œuvre des tests de charge avec Artillery.',
-    ],
-    stack: 'Playwright · Gherkin · TypeScript · Azure DevOps · Confluence · AWS · Docker · GitLab · Artillery · React · Next.js · Tailwind CSS · PrimeReact · Postman · Swagger',
   },
   {
     title: "Plateforme de suivi d'échantillons de laboratoire",
@@ -464,19 +479,44 @@ const caseStudiesFr: CaseStudy[] = [
 
 const articles = [
   {
+    title: 'How Spotify scales code health across 190,000 repos with always-on rewrites and AI',
+    meta: 'Oct 16, 2026',
+    href: 'https://medium.com/@iravizion/how-spotify-scales-code-health-across-190-000-repos-with-always-on-rewrites-and-ai-c7e78bf801b5',
+  },
+  {
+    title: 'Building a software factory: how Uber is re-architecting engineering around AI agents',
+    meta: 'Oct 13, 2026',
+    href: 'https://medium.com/@iravizion/building-a-software-factory-how-uber-is-re-architecting-engineering-around-ai-agents-41c2ce2474cb',
+  },
+  {
+    title: 'How Meta replaced code freezes with risk-aware gating and landed more changes with fewer outages',
+    meta: 'Oct 12, 2026',
+    href: 'https://medium.com/@iravizion/how-meta-replaced-code-freezes-with-risk-aware-gating-and-landed-more-changes-with-fewer-outages-3848e8aa35ac',
+  },
+  {
+    title: 'ISO 9001 in a QA Job Description? Here’s What It Really Means',
+    meta: 'Sep 30, 2026',
+    href: 'https://medium.com/@iravizion/iso-9001-in-a-qa-job-description-heres-what-it-really-means-2d72e95d2f32',
+  },
+  {
+    title: 'How to Debug Static File Delivery with curl: A Practical PDF Hosting Case Study',
+    meta: 'Sep 23, 2026',
+    href: 'https://medium.com/@iravizion/how-to-debug-static-file-delivery-with-curl-a-practical-pdf-hosting-case-study-cb16816771a9',
+  },
+  {
     title: 'How We Finally Got the Allure Dashboard Working Inside Azure DevOps',
     meta: 'Aug 14, 2026',
-    href: mediumHref,
+    href: 'https://medium.com/@iravizion/how-we-finally-got-the-allure-dashboard-working-inside-azure-devops-29126e6c5ef4',
   },
   {
     title: 'From WeakMaps to Shared Fixtures: 221 Lines Fewer in Our Playwright BDD Suite',
     meta: 'Aug 4, 2026',
-    href: mediumHref,
+    href: 'https://medium.com/@iravizion/from-weakmaps-to-shared-fixtures-221-lines-fewer-in-our-playwright-bdd-suite-a0a0a3a40356',
   },
   {
     title: 'We Read About the Hugging Face Hack. Then We Audited Our Own App.',
     meta: 'Jul 31, 2026',
-    href: mediumHref,
+    href: 'https://medium.com/@iravizion/we-read-about-the-hugging-face-hack-then-we-audited-our-own-app-9d68c5f60d87',
   },
   {
     title: 'When a Security Advisory Turns a Green Pipeline Red Without Code Changes',
@@ -584,13 +624,14 @@ const uiText = {
     heroTitleLine1: 'Testing with engineering discipline ',
     heroTitleAccent: 'and product empathy',
     heroIntro:
-      'I care about automation that earns trust: tests should be stable, purposeful, and useful when something breaks. My focus is practical coverage, thoughtful debugging data, and collaboration with developers before quality problems reach users.',
+      'I care about automation that earns trust: tests should be stable, purposeful, and genuinely helpful when something breaks. I love practical coverage, thoughtful debugging data, and working side by side with developers early on, shift-left style, so quality problems never reach users. I’m curious by nature: I go to IT meetups and conferences, follow industry news, and share what I learn in articles with practical takeaways. I enjoy bringing the best practices of leading tech companies into my own projects, especially in security and AI.',
     ariaHeroFocus: 'Testing focus',
     heroFocusLabel: 'Focus:',
-    heroFocusText: 'stable Playwright suites, LLM/AI feature evaluation, fast release feedback',
+    heroFocusText: 'stable Playwright suites, security checks, LLM/AI feature evaluation, fast release feedback',
     selectedWorkBtn: 'Selected work',
     ariaLinkedin: 'LinkedIn profile',
     ariaMedium: 'Medium profile',
+    ariaGithub: 'GitHub profile',
     ariaPortrait: 'Portrait of Irina Zhuravleva',
     ariaMetrics: 'Professional focus',
     metrics: [
@@ -627,6 +668,8 @@ const uiText = {
     writingKicker: 'Articles',
     writingTitle: 'Published writing',
     publishedLabel: 'Published',
+    readMore: 'Read more',
+    showLess: 'Show less',
     footerAvailable: 'Available for QA automation roles',
     footerHeading: 'Let’s talk about practical, maintainable test coverage.',
     copyrightSuffix: 'All rights reserved.',
@@ -649,13 +692,14 @@ const uiText = {
     heroTitleLine1: "Des tests avec la rigueur de l'ingénierie ",
     heroTitleAccent: "et l'empathie produit",
     heroIntro:
-      "L'automatisation doit inspirer confiance : les tests doivent être stables, avoir un objectif clair, et rester utiles quand quelque chose casse. Je me concentre sur une couverture pragmatique, des données de débogage exploitables et la collaboration avec les développeurs, avant que les problèmes de qualité n'atteignent les utilisateurs.",
+      "L'automatisation doit inspirer confiance : les tests doivent être stables, avoir un objectif clair, et vraiment aider quand quelque chose casse. J'aime la couverture pragmatique, les données de débogage bien pensées et le travail main dans la main avec les développeurs, en amont, dans une logique shift-left, pour que les problèmes de qualité n'atteignent jamais les utilisateurs. Je suis curieuse de nature : je vais à des meetups et conférences IT, je suis l'actualité du secteur et je partage ce que j'apprends dans des articles aux enseignements concrets. J'aime intégrer les bonnes pratiques des grandes entreprises tech dans mes propres projets, surtout en sécurité et en IA.",
     ariaHeroFocus: 'Axe de test',
     heroFocusLabel: 'Focus :',
-    heroFocusText: "suites Playwright stables, évaluation des fonctionnalités IA/LLM, retours rapides avant chaque mise en production",
+    heroFocusText: "suites Playwright stables, contrôles de sécurité, évaluation des fonctionnalités IA/LLM, retours rapides avant chaque mise en production",
     selectedWorkBtn: 'Projets sélectionnés',
     ariaLinkedin: 'Profil LinkedIn',
     ariaMedium: 'Profil Medium',
+    ariaGithub: 'Profil GitHub',
     ariaPortrait: "Portrait d'Irina Zhuravleva",
     ariaMetrics: 'Axes professionnels',
     metrics: [
@@ -692,6 +736,8 @@ const uiText = {
     writingKicker: 'Articles',
     writingTitle: 'Articles publiés',
     publishedLabel: 'Publié',
+    readMore: 'Lire la suite',
+    showLess: 'Voir moins',
     footerAvailable: 'Disponible pour des postes en automatisation QA',
     footerHeading: "Discutons d'une couverture de test pratique et maintenable.",
     copyrightSuffix: 'Tous droits réservés.',
@@ -746,50 +792,54 @@ function CaseStudyFlipCard({ study, labels }: { study: CaseStudy; labels: CaseSt
     >
       <div className="case-study-flip-inner">
         <article className="case-study-card case-study-front" aria-hidden={flipped} tabIndex={flipped ? -1 : 0}>
-          <div className="case-study-heading">
-            <h3>{study.title}</h3>
-            <span className="case-study-role">{study.role}</span>
+          <div className="case-study-scroll">
+            <div className="case-study-heading">
+              <h3>{study.title}</h3>
+              <span className="case-study-role">{study.role}</span>
+            </div>
+            <div className="case-study-block">
+              <span className="case-study-label">{labels.description}</span>
+              <p>{study.description}</p>
+            </div>
+            <div className="case-study-block">
+              <span className="case-study-label">{labels.achievements}</span>
+              <ul>
+                {study.achievements.map((achievement) => (
+                  <li key={achievement}>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+            <p className="case-study-stack">{study.stack}</p>
+            <span className="case-study-flip-hint">
+              <RotateCw size={14} />
+              {labels.hintFront}
+            </span>
           </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.description}</span>
-            <p>{study.description}</p>
-          </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.achievements}</span>
-            <ul>
-              {study.achievements.map((achievement) => (
-                <li key={achievement}>{achievement}</li>
-              ))}
-            </ul>
-          </div>
-          <p className="case-study-stack">{study.stack}</p>
-          <span className="case-study-flip-hint">
-            <RotateCw size={14} />
-            {labels.hintFront}
-          </span>
         </article>
         <article className="case-study-card case-study-back" aria-hidden={!flipped} tabIndex={flipped ? 0 : -1}>
-          <div className="case-study-heading">
-            <h3>{study.title}</h3>
-            <span className="case-study-role">{study.role}</span>
+          <div className="case-study-scroll">
+            <div className="case-study-heading">
+              <h3>{study.title}</h3>
+              <span className="case-study-role">{study.role}</span>
+            </div>
+            <div className="case-study-block">
+              <span className="case-study-label">{labels.challenge}</span>
+              <p>{study.challenge}</p>
+            </div>
+            <div className="case-study-block">
+              <span className="case-study-label">{labels.solution}</span>
+              <p>{study.solution}</p>
+            </div>
+            <div className="case-study-block">
+              <span className="case-study-label">{labels.results}</span>
+              <p>{study.results}</p>
+            </div>
+            <p className="case-study-stack">{study.stack}</p>
+            <span className="case-study-flip-hint">
+              <RotateCw size={14} />
+              {labels.hintBack}
+            </span>
           </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.challenge}</span>
-            <p>{study.challenge}</p>
-          </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.solution}</span>
-            <p>{study.solution}</p>
-          </div>
-          <div className="case-study-block">
-            <span className="case-study-label">{labels.results}</span>
-            <p>{study.results}</p>
-          </div>
-          <p className="case-study-stack">{study.stack}</p>
-          <span className="case-study-flip-hint">
-            <RotateCw size={14} />
-            {labels.hintBack}
-          </span>
         </article>
       </div>
     </div>
@@ -799,6 +849,7 @@ function CaseStudyFlipCard({ study, labels }: { study: CaseStudy; labels: CaseSt
 export function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showAllArticles, setShowAllArticles] = useState(false);
   const t = uiText[lang];
   const skillGroups = skillGroupsByLang[lang];
   const recommendations = recommendationsByLang[lang];
@@ -891,6 +942,9 @@ export function App() {
             </a>
             <a className="button icon-link" href={mediumHref} target="_blank" rel="noreferrer" aria-label={t.ariaMedium}>
               <PenLine size={18} />
+            </a>
+            <a className="button icon-link" href={githubHref} target="_blank" rel="noreferrer" aria-label={t.ariaGithub}>
+              <Github size={18} />
             </a>
           </div>
         </div>
@@ -1072,7 +1126,7 @@ export function App() {
           <h2 id="writing-title">{t.writingTitle}</h2>
         </div>
         <div className="article-list">
-          {articles.map((article) => (
+          {(showAllArticles ? articles : articles.slice(0, 3)).map((article) => (
             <a
               className="article-row"
               href={article.href}
@@ -1090,6 +1144,16 @@ export function App() {
             </a>
           ))}
         </div>
+        {articles.length > 3 && (
+          <button
+            className="button secondary articles-toggle"
+            type="button"
+            aria-expanded={showAllArticles}
+            onClick={() => setShowAllArticles((v) => !v)}
+          >
+            {showAllArticles ? t.showLess : t.readMore}
+          </button>
+        )}
       </section>
 
       {/* <section className="section" id="meetups" aria-labelledby="meetups-title">
@@ -1127,6 +1191,10 @@ export function App() {
           <a className="button primary" href={mediumHref} target="_blank" rel="noreferrer">
             <PenLine size={18} />
             Medium
+          </a>
+          <a className="button primary" href={githubHref} target="_blank" rel="noreferrer">
+            <Github size={18} />
+            GitHub
           </a>
         </div>
         <p className="contact-band-copyright">
