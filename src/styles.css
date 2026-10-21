@@ -192,10 +192,11 @@ nav a:hover {
   align-items: center;
   gap: clamp(34px, 7vw, 96px);
   min-height: calc(100svh - 73px);
-  padding: clamp(44px, 6vw, 76px) clamp(18px, 5vw, 64px) clamp(32px, 4vw, 56px);
+  padding: clamp(20px, 3vw, 36px) clamp(18px, 5vw, 64px) clamp(32px, 4vw, 56px);
 }
 
 .hero-copy {
+  align-self: start;
   max-width: 840px;
 }
 
